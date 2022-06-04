@@ -1,3 +1,3 @@
-# pterodactyl-nginx
+# pterodactyl-nginx-modified
 
-self explanatory
+unofficial modification of https://gitlab.com/tenten8401/pterodactyl-nginx
