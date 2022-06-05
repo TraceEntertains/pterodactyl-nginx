@@ -1,5 +1,9 @@
 #!/bin/bash
 
+systemctl stop nginx
+certbot renew
+systemctl start nginx
+
 echo "Starting PHP-FPM..."
 /usr/sbin/php-fpm7.0 --fpm-config /home/container/php-fpm/php-fpm.conf --daemonize
 
