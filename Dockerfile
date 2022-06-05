@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-RUN sudo apt-get update && sudo apt-get install -y ca-certificates nginx && sudo apt-get clean && sudo apt-get install -y php7.0-common php7.0-mysql php7.0-xml openssl mysql-server php-mysql
+RUN apt-get update && apt-get install -y ca-certificates nginx && apt-get clean && apt-get install -y php7.0-common php7.0-mysql php7.0-xml openssl mysql-server php-mysql
 
 USER container
 ENV USER container
