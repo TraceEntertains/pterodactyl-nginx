@@ -4,25 +4,25 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2022-06-04T19:31:10-04:00",
+    "exported_at": "2022-06-04T22:54:29-04:00",
     "name": "Nginx",
     "author": "unknown@unknown.com",
     "description": "Nginx",
     "features": null,
     "docker_images": {
-        "registry.gitlab.com\/tenten8401\/pterodactyl-nginx": "registry.gitlab.com\/tenten8401\/pterodactyl-nginx"
+        "ghcr.io\/traceentertains\/pterodactyl-nginx-modified:latest": "ghcr.io\/traceentertains\/pterodactyl-nginx-modified:latest"
     },
     "file_denylist": [],
     "startup": "{{STARTUP_CMD}}",
     "config": {
-        "files": "{\r\n    \"nginx\/conf.d\/default.conf\": {\r\n        \"parser\": \"file\",\r\n        \"find\": {\r\n            \"    listen \": \"    listen {{server.build.default.port}};\",\r\n            \"    listen [::]:\": \"    listen [::]:{{server.build.default.port}};\"\r\n        }\r\n    }\r\n}",
+        "files": "{\r\n    \"nginx\/conf.d\/default.conf\": {\r\n        \"parser\": \"file\",\r\n        \"find\": {\r\n            \"    listen \": \"    listen {{server.build.default.port}};\"\r\n        }\r\n    }\r\n}",
         "startup": "{\r\n    \"done\": \"\",\r\n    \"userInteraction\": []\r\n}",
         "logs": "{\r\n    \"custom\": false,\r\n    \"location\": \"logs\/latest.log\"\r\n}",
         "stop": "^C"
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/bash\r\n\r\ncd \/mnt\/server\r\n\r\napk --update add git\r\n\r\ngit clone https:\/\/gitlab.com\/tenten8401\/pterodactyl-nginx .\/temp\r\n\r\nls\r\n\r\ncp -r .\/temp\/nginx \/mnt\/server\/\r\ncp -r .\/temp\/php-fpm \/mnt\/server\/\r\ncp -r .\/temp\/webroot \/mnt\/server\/\r\ncp .\/temp\/start.sh \/mnt\/server\/\r\n\r\nchmod +x \/mnt\/server\/start.sh\r\n\r\nrm -rf .\/temp",
+            "script": "#!\/bin\/bash\r\n\r\ncd \/mnt\/server\r\n\r\napk --update add git\r\n\r\ngit clone https:\/\/github.com\/TraceEntertains\/pterodactyl-nginx-modified .\/temp\r\n\r\nls\r\n\r\ncp -r .\/temp\/nginx \/mnt\/server\/\r\ncp -r .\/temp\/php-fpm \/mnt\/server\/\r\ncp -r .\/temp\/webroot \/mnt\/server\/\r\ncp .\/temp\/start.sh \/mnt\/server\/\r\n\r\ncertbot certonly --nginx -d example.com # replace with your domain locally!\r\n\r\nchmod +x \/mnt\/server\/start.sh\r\n\r\nrm -rf .\/temp",
             "container": "ubuntu:20.04",
             "entrypoint": "bash"
         }
