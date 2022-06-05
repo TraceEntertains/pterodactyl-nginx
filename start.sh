@@ -5,7 +5,7 @@ certbot renew
 systemctl start nginx
 
 echo "Starting PHP-FPM..."
-/usr/sbin/php-fpm7.0 --fpm-config /home/container/php-fpm/php-fpm.conf --daemonize
+sudo /usr/sbin/php-fpm7.0 --fpm-config /home/container/php-fpm/php-fpm.conf --daemonize
 
 echo "Starting Nginx..."
-/sbin/nginx -c /home/container/nginx/nginx.conf
+sudo /sbin/nginx -c /home/container/nginx/nginx.conf
